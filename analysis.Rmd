@@ -10,3 +10,18 @@ knitr::opts_chunk$set(echo = TRUE)
 library(billboard)
 library(tidyverse)
 ```
+
+```{r}
+x <- wiki_hot_100s|> as_tibble()|> mutate(year= as.numeric(year))
+```
+
+```{r}
+#watch out for artists w dif names
+
+temp<- x |>
+select(artist)|> 
+group_by(artist)|>
+summarise(freq= n())|>
+arrange(desc(freq))
+```
+`r temp$artist[1]` appears the most.

@@ -370,7 +370,15 @@ pre code {
 </div>
 
 
+<pre class="r"><code>x &lt;- wiki_hot_100s|&gt; as_tibble()|&gt; mutate(year= as.numeric(year))</code></pre>
+<pre class="r"><code>#watch out for artists w dif names
 
+temp&lt;- x |&gt;
+select(artist)|&gt; 
+group_by(artist)|&gt;
+summarise(freq= n())|&gt;
+arrange(desc(freq))</code></pre>
+<p>Madonna appears the most.</p>
 
 
 
